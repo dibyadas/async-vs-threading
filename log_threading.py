@@ -2,10 +2,11 @@ import select
 import threading
 
 number_of_events_read = 0
+filepath = '/dev/input/event5'
 
 def log_events(lock):
     global number_of_events_read
-    file = open('/dev/input/event5','rb')
+    file = open(filepath,'rb')
     while True:
         # select returns after 0.05 secs and we have to check if r is 
         # empty( == socket not ready ) or non-empty ( == socket ready to be read)
@@ -21,7 +22,7 @@ def log_events(lock):
             
 def notify_events(lock):
     global number_of_events_read
-    file = open('/dev/input/event5','rb')
+    file = open(filepath,'rb')
     while True:
         # select returns after 0.05 secs and we have to check if r is 
         # empty( == socket not ready ) or non-empty ( == socket ready to be read)

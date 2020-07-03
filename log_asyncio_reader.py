@@ -1,11 +1,10 @@
 import asyncio
-import select
 
 number_of_events_read = 0
-
+filepath = '/dev/input/event5'
 
 async def log_events():
-    file = open('/dev/input/event6', 'rb')
+    file = open(filepath, 'rb')
 
     def callback():
         global number_of_events_read
@@ -18,7 +17,7 @@ async def log_events():
 
 
 async def notify_events():
-    file = open('/dev/input/event6', 'rb')
+    file = open(filepath, 'rb')
 
     def callback():
         global number_of_events_read

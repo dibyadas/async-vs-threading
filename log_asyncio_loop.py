@@ -2,10 +2,11 @@ import asyncio
 import select
 
 number_of_events_read = 0
+filepath = '/dev/input/event5'
 
 async def log_events():
     global number_of_events_read
-    file = open('/dev/input/event5','rb')
+    file = open(filepath,'rb')
     while True:
         # select returns after 0.05 secs and we have to check if r is 
         # empty( == socket not ready ) or non-empty ( == socket ready to be read)
@@ -19,7 +20,7 @@ async def log_events():
             
 async def notify_events():
     global number_of_events_read
-    file = open('/dev/input/event5','rb')
+    file = open(filepath,'rb')
     while True:
         # select returns after 0.05 secs and we have to check if r is 
         # empty( == socket not ready ) or non-empty ( == socket ready to be read)
